@@ -1,0 +1,62 @@
+<div class="container">
+    <h1>Listado de Héroes</h1>
+    <div class="mb-3 row">
+        <label for="inputNameHeroe" class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="nombreHeroe" id="nombreHeroe" type="text" class="form-control"
+                placeholder="Digite el nombre">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="inputPoderHeroe" class="col-sm-2 col-form-label">Poderes</label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="poderHeroe" id="poderHeroe" type="text" class="form-control"
+                placeholder="Digite los poderes">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="inputUniversoHeroe" class="col-sm-2 col-form-label">Universo</label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="universoHeroe" id="universoHeroe" type="text" class="form-control"
+                placeholder="Digite el universo">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="inputUniversoHeroe" class="col-sm-2 col-form-label">Debilidad</label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="debilidadHeroe" id="debilidadHeroe" type="text" class="form-control"
+                placeholder="Digite su debilidad">
+        </div>
+    </div>
+    <div class="container text-center">
+        <button id="btnNuevoHeroe" (click)="CrearHeroe()" class="btn btn-success">Nuevo</button>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Poder</th>
+                <th scope="col">Universo</th>
+                <th scope="col">Debilidad</th>
+                <th scope="col" style="text-align: center;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (heroe of listadoHeroes; track heroe.id) {
+            <tr>
+                <th scope="row">{{ heroe.id }}</th>
+                <td>{{ heroe.nombre }}</td>
+                <td>{{ heroe.poder }}</td>
+                <td>{{ heroe.universo }}</td>
+                <td>{{ heroe.debilidad }}</td>
+                <td style="text-align: center;">
+                    <button (click)="CargarHeroes()" style="margin: 20px;" type="button"
+                        class="btn btn-primary">Actualizar</button>&nbsp;
+                    <button (click)="EliminarHeroe(heroe.id)" type="button" class="btn btn-danger">Eliminar</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
